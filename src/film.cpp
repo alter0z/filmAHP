@@ -36,6 +36,7 @@ int main(){
 
     string label[6] = {"genre","country","visual","age","viewers","ratting"};
 
+    // input compare
     for(int i = 0; i <= 5; i++){
         for(int j = 0; j <= 5; j++){
             if(i == j){
