@@ -36,23 +36,24 @@ int main(){
 
     string label[6] = {"genre","country","visual","age","viewers","ratting"};
 
-    for(int i = 0; i <= 5; i++){
-        for(int j = 0; j <= 5; j++){
-            if(i == j){
-                compare[i][j] = 1.0f;
-            } else {
-                if(compare[i][j] == 0){
-                    if(i <= j){
-                        cout << "antara " << label[i] << " dan " << label[j] << " lebih suka mana? "; cin >> stringCompare[i][j];
-                        cout << "rasio: "; cin >> compare[i][j];
-                        compare[j][i] = (1.0f / compare[i][j]);
-                    }
-                }
-            }
-        }
-    }   
+    // for(int i = 0; i <= 5; i++){
+    //     for(int j = 0; j <= 5; j++){
+    //         if(i == j){
+    //             compare[i][j] = 1.0f;
+    //         } else {
+    //             if(compare[i][j] == 0){
+    //                 if(i <= j){
+    //                     cout << "antara " << label[i] << " dan " << label[j] << " lebih suka mana? "; cin >> stringCompare[i][j];
+    //                     cout << "rasio: "; cin >> compare[i][j];
+    //                     compare[j][i] = (1.0f / compare[i][j]);
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }   
 
     CriteriaComparasion(compare,stringCompare,label);
+    AlternativeForGenre();
 
     cin.get();
 }
