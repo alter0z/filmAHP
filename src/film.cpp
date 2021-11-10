@@ -54,6 +54,11 @@ int main(){
 
     CriteriaComparasion(compare,stringCompare,label);
     AlternativeForGenre();
+    AlternativeForCountry();
+    AlternativeForVisual();
+    AlternativeForAge();
+    AlternativeForViewer();
+    AlternativeForRatting();
 
     cin.get();
 }
