@@ -5,21 +5,24 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
     float criteriaMatrix[6][6];
     float denominator = 1;
 
+    // put ratio compare criteria into matrix
     for(int i = 0; i <= 5; i++){
         for(int j = 0; j <= 5; j++){
             criteriaMatrix[i][j] = (float) compare[i][j];
         }
     }
 
+    // compare favorable criteria 
     for(int i = 0; i <= 5; i++){
         for(int j = 0; j <= 5; j++){
             if(stringCompare[i][j] == label[i]){
-                criteriaMatrix[i][j] = (denominator / compare[i][j]);
-                criteriaMatrix[j][i] = (denominator / compare[j][i]);
+                criteriaMatrix[i][j] = (denominator / compare[i][j]); // put ij 1/ratio
+                criteriaMatrix[j][i] = (denominator / compare[j][i]); // put ji 1/ratio
             }
         }
     }
 
+    // print criteria compare
     for(int i = 0; i <= 5; i++){
         for(int j = 0; j <= 5; j++){
             cout << criteriaMatrix[i][j] << endl;
@@ -30,6 +33,7 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
     float eigen[6][6];
     float totalGenre = 0,totalVisual = 0,totalAge = 0,totalViewers = 0,totalRatting = 0,totalCountry = 0;
 
+    // sum criteria culumn
     for(int i = 0; i <= 5; i++){
         totalGenre += criteriaMatrix[0][i];
         totalCountry += criteriaMatrix[1][i];
@@ -39,6 +43,7 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
         totalRatting += criteriaMatrix[5][i];
     }
 
+    // print sum each criteria column
     cout << endl;
     cout << totalGenre << endl;
     cout << totalCountry << endl;
@@ -47,6 +52,7 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
     cout << totalViewers << endl;
     cout << totalRatting << endl;
 
+    // eigen value criteria column / total criteria column
     for(int i = 0; i <= 5; i++){
         for(int j = 0; j <= 5; j++){
             if(i == 0){
