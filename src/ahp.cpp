@@ -45,12 +45,12 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
 
     // print sum each criteria column
     cout << endl;
-    cout << totalGenre << endl;
-    cout << totalCountry << endl;
-    cout << totalVisual << endl;
-    cout << totalAge << endl;
-    cout << totalViewers << endl;
-    cout << totalRatting << endl;
+    cout << "Total genre: " << totalGenre << endl;
+    cout << "Total country: " << totalCountry << endl;
+    cout << "Total visual: " << totalVisual << endl;
+    cout << "Total age: " << totalAge << endl;
+    cout << "Total viewers: " << totalViewers << endl;
+    cout << "Total ratting: " << totalRatting << endl;
 
     // eigen value criteria column / total criteria column
     for(int i = 0; i <= 5; i++){
@@ -70,6 +70,54 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
             }
         }
     }
+
+    // print eigen value
+    for(int i = 0; i <= 5; i++){
+        for(int j = 0; j <= 5; j++){
+            cout << eigen[i][j] << endl;
+        }
+    }
+
+    // sum eigen criteria row
+    float totalEigenForGenre = 0,totalEigenForCountry = 0,totalEigenForVisual = 0,totalEigenForAge = 0,totalEigenForViewers = 0,totalEigenForRatting = 0;
+
+    for(int j = 0; j <= 5; j++){
+        totalEigenForGenre += eigen[j][0];
+        totalEigenForCountry += eigen[j][1];
+        totalEigenForVisual += eigen[j][2];
+        totalEigenForAge += eigen[j][3];
+        totalEigenForViewers += eigen[j][4];
+        totalEigenForRatting += eigen[j][5];
+    }
+
+    // print total eigen each criteraia
+    cout << endl;
+    cout << "Total eigen genre: " << totalEigenForGenre << endl;
+    cout << "Total eigen country: " << totalEigenForCountry << endl;
+    cout << "Total eigen visual: " << totalEigenForVisual << endl;
+    cout << "Total eigen age: " << totalEigenForAge << endl;
+    cout << "Total eigen viewers: " << totalEigenForViewers << endl;
+    cout << "Total eigen ratting: " << totalEigenForRatting << endl;
+
+    // average total eigen
+    float averageTotalEigenForGenre = 0,averageTotalEigenForCountry = 0,averageTotalEigenForVisual = 0,averageTotalEigenForAge = 0,averageTotalEigenForViewers = 0,averageTotalEigenForRatting = 0;
+
+    // calculate average eigen
+    averageTotalEigenForGenre = (totalEigenForGenre / 6.0f);
+    averageTotalEigenForCountry = (totalEigenForCountry / 6.0f);
+    averageTotalEigenForVisual = (totalEigenForVisual / 6.0f);
+    averageTotalEigenForAge = (totalEigenForAge / 6.0f);
+    averageTotalEigenForViewers = (totalEigenForViewers / 6.0f);
+    averageTotalEigenForRatting = (totalEigenForRatting / 6.0f);
+
+    // print average eigen
+    cout << endl;
+    cout << "rata-tata total eigen genre: " << averageTotalEigenForGenre << endl;
+    cout << "rata-tata total eigen country: " << averageTotalEigenForCountry << endl;
+    cout << "rata-tata total eigen visual: " << averageTotalEigenForVisual << endl;
+    cout << "rata-tata total eigen age: " << averageTotalEigenForAge << endl;
+    cout << "rata-tata total eigen viewers: " << averageTotalEigenForViewers << endl;
+    cout << "rata-tata total eigen ratting: " << averageTotalEigenForRatting << endl;
 }
 
 void AlternativeForGenre(){
