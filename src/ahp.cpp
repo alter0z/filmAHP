@@ -1,5 +1,10 @@
 #include<iostream>
 #include "film_data.cpp"
+#include<algorithm>
+
+// global variables for criteria compare
+// average total eigen criteria compare
+    float averageTotalEigenForGenre = 0,averageTotalEigenForCountry = 0,averageTotalEigenForVisual = 0,averageTotalEigenForAge = 0,averageTotalEigenForViewers = 0,averageTotalEigenForRatting = 0;
 
 void CriteriaComparasion(float compare[][6],string stringCompare[][6],string label[6]){
     float criteriaMatrix[6][6];
@@ -72,6 +77,7 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
     }
 
     // print eigen value
+    cout << endl;
     for(int i = 0; i <= 5; i++){
         for(int j = 0; j <= 5; j++){
             cout << eigen[i][j] << endl;
@@ -99,9 +105,6 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
     cout << "Total eigen viewers: " << totalEigenForViewers << endl;
     cout << "Total eigen ratting: " << totalEigenForRatting << endl;
 
-    // average total eigen
-    float averageTotalEigenForGenre = 0,averageTotalEigenForCountry = 0,averageTotalEigenForVisual = 0,averageTotalEigenForAge = 0,averageTotalEigenForViewers = 0,averageTotalEigenForRatting = 0;
-
     // calculate average eigen
     averageTotalEigenForGenre = (totalEigenForGenre / 6.0f);
     averageTotalEigenForCountry = (totalEigenForCountry / 6.0f);
@@ -118,7 +121,25 @@ void CriteriaComparasion(float compare[][6],string stringCompare[][6],string lab
     cout << "rata-tata total eigen age: " << averageTotalEigenForAge << endl;
     cout << "rata-tata total eigen viewers: " << averageTotalEigenForViewers << endl;
     cout << "rata-tata total eigen ratting: " << averageTotalEigenForRatting << endl;
+
+    // consistency
+    float lamdaMaxFromCriteriaCompare = (totalGenre*averageTotalEigenForGenre)+(totalCountry*averageTotalEigenForCountry)+(totalVisual*averageTotalEigenForVisual)+(totalAge*averageTotalEigenForAge)+(totalViewers*averageTotalEigenForViewers)+(totalRatting*averageTotalEigenForRatting);
+
+    float consistencyRatioFromCriteriaCompare,consistencyIndexFromCriteriaCompare,irFromCriteriaCompare;
+
+    irFromCriteriaCompare = 1.24f; // there ar 6 criteria
+    consistencyIndexFromCriteriaCompare = ((lamdaMaxFromCriteriaCompare-6)/(6-1));
+    consistencyRatioFromCriteriaCompare = (consistencyIndexFromCriteriaCompare/irFromCriteriaCompare);
+
+    cout << endl;
+    cout << "Lamda Max: " << lamdaMaxFromCriteriaCompare << endl;
+    cout << "CI: " << consistencyIndexFromCriteriaCompare << endl;
+    cout << "CR: " << consistencyRatioFromCriteriaCompare << endl;
 }
+
+// global variables for alternative genre
+// average total eigen alternative genre
+    float averageTotalEigenForFilmAFromGenre = 0,averageTotalEigenForFilmBFromGenre = 0,averageTotalEigenForFilmCFromGenre = 0,averageTotalEigenForFilmDFromGenre = 0;
 
 void AlternativeForGenre(){
     float alternativeMatrixForGenre[4][4];
@@ -207,9 +228,6 @@ void AlternativeForGenre(){
     cout << "Total eigen film C: " << totalEigenForFilmCFromGenre << endl;
     cout << "Total eigen film D: " << totalEigenForFilmDFromGenre << endl;
 
-    // average total eigen
-    float averageTotalEigenForFilmAFromGenre = 0,averageTotalEigenForFilmBFromGenre = 0,averageTotalEigenForFilmCFromGenre = 0,averageTotalEigenForFilmDFromGenre = 0;
-
     // calculate average total eigen
     averageTotalEigenForFilmAFromGenre = (totalEigenForFilmAFromGenre / 4.0f);
     averageTotalEigenForFilmBFromGenre = (totalEigenForFilmBFromGenre / 4.0f);
@@ -232,10 +250,15 @@ void AlternativeForGenre(){
     consistencyIndexFromGenre = ((lamdaMaxFromGenre-4)/(4-1));
     consistencyRatioFromGenre = (consistencyIndexFromGenre/irFromGenre);
 
+    cout << endl;
     cout << "Lamda Max: " << lamdaMaxFromGenre << endl;
     cout << "CI: " << consistencyIndexFromGenre << endl;
     cout << "CR: " << consistencyRatioFromGenre << endl;
 }
+
+// global variables for alternative country
+// average total eigen alternative country
+    float averageTotalEigenForFilmAFromCountry = 0,averageTotalEigenForFilmBFromCountry = 0,averageTotalEigenForFilmCFromCountry = 0,averageTotalEigenForFilmDFromCountry = 0;
 
 void AlternativeForCountry(){
     float alternativeMatrixForCountry[4][4];
@@ -324,9 +347,6 @@ void AlternativeForCountry(){
     cout << "Total eigen film C: " << totalEigenForFilmCFromCountry << endl;
     cout << "Total eigen film D: " << totalEigenForFilmDFromCountry << endl;
 
-    // average total eigen
-    float averageTotalEigenForFilmAFromCountry = 0,averageTotalEigenForFilmBFromCountry = 0,averageTotalEigenForFilmCFromCountry = 0,averageTotalEigenForFilmDFromCountry = 0;
-
     // calculate average total eigen
     averageTotalEigenForFilmAFromCountry = (totalEigenForFilmAFromCountry / 4.0f);
     averageTotalEigenForFilmBFromCountry = (totalEigenForFilmBFromCountry / 4.0f);
@@ -349,10 +369,15 @@ void AlternativeForCountry(){
     consistencyIndexFromCountry = ((lamdaMaxFromCountry-4)/(4-1));
     consistencyRatioFromCountry = (consistencyIndexFromCountry/irFromCountry);
 
+    cout << endl;
     cout << "Lamda Max: " << lamdaMaxFromCountry << endl;
     cout << "CI: " << consistencyIndexFromCountry << endl;
     cout << "CR: " << consistencyRatioFromCountry << endl;
 }
+
+// global variables for alternative visual
+// average total eigen alternative visual
+    float averageTotalEigenForFilmAFromVisual = 0,averageTotalEigenForFilmBFromVisual = 0,averageTotalEigenForFilmCFromVisual = 0,averageTotalEigenForFilmDFromVisual = 0;
 
 void AlternativeForVisual(){
     float alternativeMatrixForVisual[4][4];
@@ -441,9 +466,6 @@ void AlternativeForVisual(){
     cout << "Total eigen film C: " << totalEigenForFilmCFromVisual << endl;
     cout << "Total eigen film D: " << totalEigenForFilmDFromVisual << endl;
 
-    // average total eigen
-    float averageTotalEigenForFilmAFromVisual = 0,averageTotalEigenForFilmBFromVisual = 0,averageTotalEigenForFilmCFromVisual = 0,averageTotalEigenForFilmDFromVisual = 0;
-
     // calculate average total eigen
     averageTotalEigenForFilmAFromVisual = (totalEigenForFilmAFromVisual / 4.0f);
     averageTotalEigenForFilmBFromVisual = (totalEigenForFilmBFromVisual / 4.0f);
@@ -466,10 +488,15 @@ void AlternativeForVisual(){
     consistencyIndexFromVisual = ((lamdaMaxFromVisual-4)/(4-1));
     consistencyRatioFromVisual = (consistencyIndexFromVisual/irFromVisual);
 
+    cout << endl;
     cout << "Lamda Max: " << lamdaMaxFromVisual << endl;
     cout << "CI: " << consistencyIndexFromVisual << endl;
     cout << "CR: " << consistencyRatioFromVisual << endl;
 }
+
+// global variables for alternative age
+// average total eigen alternative age
+    float averageTotalEigenForFilmAFromAge = 0, averageTotalEigenForFilmBFromAge = 0, averageTotalEigenForFilmCFromAge = 0, averageTotalEigenForFilmDFromAge = 0;
 
 void AlternativeForAge()
 {
@@ -574,9 +601,6 @@ void AlternativeForAge()
     cout << "Total eigen film C: " << totalEigenForFilmCFromAge << endl;
     cout << "Total eigen film D: " << totalEigenForFilmDFromAge << endl;
 
-    // average total eigen
-    float averageTotalEigenForFilmAFromAge = 0, averageTotalEigenForFilmBFromAge = 0, averageTotalEigenForFilmCFromAge = 0, averageTotalEigenForFilmDFromAge = 0;
-
     // calculate average total eigen
     averageTotalEigenForFilmAFromAge = (totalEigenForFilmAFromAge / 4.0f);
     averageTotalEigenForFilmBFromAge = (totalEigenForFilmBFromAge / 4.0f);
@@ -599,10 +623,15 @@ void AlternativeForAge()
     consistencyIndexFromAge = ((lamdaMaxFromAge - 4) / (4 - 1));
     consistencyRatioFromAge = (consistencyIndexFromAge / irFromAge);
 
+    cout << endl;
     cout << "Lamda Max: " << lamdaMaxFromAge << endl;
     cout << "CI: " << consistencyIndexFromAge << endl;
     cout << "CR: " << consistencyRatioFromAge << endl;
 }
+
+// global variables for alternative viewers
+// average total eigen alternative viewers
+    float averageTotalEigenForFilmAFromViewer = 0,averageTotalEigenForFilmBFromViewer = 0,averageTotalEigenForFilmCFromViewer = 0,averageTotalEigenForFilmDFromViewer = 0;
 
 void AlternativeForViewer(){
     float alternativeMatrixForViewer[4][4];
@@ -691,9 +720,6 @@ void AlternativeForViewer(){
     cout << "Total eigen film C: " << totalEigenForFilmCFromViewer << endl;
     cout << "Total eigen film D: " << totalEigenForFilmDFromViewer << endl;
 
-    // average total eigen
-    float averageTotalEigenForFilmAFromViewer = 0,averageTotalEigenForFilmBFromViewer = 0,averageTotalEigenForFilmCFromViewer = 0,averageTotalEigenForFilmDFromViewer = 0;
-
     // calculate average total eigen
     averageTotalEigenForFilmAFromViewer = (totalEigenForFilmAFromViewer / 4.0f);
     averageTotalEigenForFilmBFromViewer = (totalEigenForFilmBFromViewer / 4.0f);
@@ -716,10 +742,15 @@ void AlternativeForViewer(){
     consistencyIndexFromViewer = ((lamdaMaxFromViewer-4)/(4-1));
     consistencyRatioFromViewer = (consistencyIndexFromViewer/irFromViewer);
 
+    cout << endl;
     cout << "Lamda Max: " << lamdaMaxFromViewer << endl;
     cout << "CI: " << consistencyIndexFromViewer << endl;
     cout << "CR: " << consistencyRatioFromViewer << endl;
 }
+
+// global variables for alternative ratting
+// average total eigen alternative ratting
+    float averageTotalEigenForFilmAFromRatting = 0,averageTotalEigenForFilmBFromRatting = 0,averageTotalEigenForFilmCFromRatting = 0,averageTotalEigenForFilmDFromRatting = 0;
 
 void AlternativeForRatting(){
     float alternativeMatrixForRatting[4][4];
@@ -808,9 +839,6 @@ void AlternativeForRatting(){
     cout << "Total eigen film C: " << totalEigenForFilmCFromRatting << endl;
     cout << "Total eigen film D: " << totalEigenForFilmDFromRatting << endl;
 
-    // average total eigen
-    float averageTotalEigenForFilmAFromRatting = 0,averageTotalEigenForFilmBFromRatting = 0,averageTotalEigenForFilmCFromRatting = 0,averageTotalEigenForFilmDFromRatting = 0;
-
     // calculate average total eigen
     averageTotalEigenForFilmAFromRatting = (totalEigenForFilmAFromRatting / 4.0f);
     averageTotalEigenForFilmBFromRatting = (totalEigenForFilmBFromRatting / 4.0f);
@@ -836,4 +864,96 @@ void AlternativeForRatting(){
     cout << "Lamda Max: " << lamdaMaxFromRatting << endl;
     cout << "CI: " << consistencyIndexFromRatting << endl;
     cout << "CR: " << consistencyRatioFromRatting << endl;
+}
+
+struct resultFilm{
+    string charFilm,title,genre,visual,age,country,ratting,viewers;
+    float scoreResult;
+};
+
+
+void Ranking(){
+    FilmData();
+    float rankFilmA = 0,rankFilmB = 0,rankFilmC = 0,rankFilmD = 0,compareResult1 = 0,compareResult2 = 0,result = 0;
+
+    rankFilmA = (averageTotalEigenForGenre*averageTotalEigenForFilmAFromGenre)+(averageTotalEigenForCountry*averageTotalEigenForFilmAFromCountry)+(averageTotalEigenForVisual*averageTotalEigenForFilmAFromVisual)+(averageTotalEigenForAge*averageTotalEigenForFilmAFromAge)+(averageTotalEigenForViewers*averageTotalEigenForFilmAFromViewer)+(averageTotalEigenForRatting*averageTotalEigenForFilmAFromRatting);
+
+    film1.scoreResult = rankFilmA; 
+
+    rankFilmB = (averageTotalEigenForGenre*averageTotalEigenForFilmBFromGenre)+(averageTotalEigenForCountry*averageTotalEigenForFilmBFromCountry)+(averageTotalEigenForVisual*averageTotalEigenForFilmBFromVisual)+(averageTotalEigenForAge*averageTotalEigenForFilmBFromAge)+(averageTotalEigenForViewers*averageTotalEigenForFilmBFromViewer)+(averageTotalEigenForRatting*averageTotalEigenForFilmBFromRatting);
+
+    film2.scoreResult = rankFilmB; 
+
+    rankFilmC = (averageTotalEigenForGenre*averageTotalEigenForFilmCFromGenre)+(averageTotalEigenForCountry*averageTotalEigenForFilmCFromCountry)+(averageTotalEigenForVisual*averageTotalEigenForFilmCFromVisual)+(averageTotalEigenForAge*averageTotalEigenForFilmCFromAge)+(averageTotalEigenForViewers*averageTotalEigenForFilmCFromViewer)+(averageTotalEigenForRatting*averageTotalEigenForFilmCFromRatting);
+
+    film3.scoreResult = rankFilmC; 
+
+    rankFilmD = (averageTotalEigenForGenre*averageTotalEigenForFilmDFromGenre)+(averageTotalEigenForCountry*averageTotalEigenForFilmDFromCountry)+(averageTotalEigenForVisual*averageTotalEigenForFilmDFromVisual)+(averageTotalEigenForAge*averageTotalEigenForFilmDFromAge)+(averageTotalEigenForViewers*averageTotalEigenForFilmDFromViewer)+(averageTotalEigenForRatting*averageTotalEigenForFilmDFromRatting);
+
+    film4.scoreResult = rankFilmD;
+
+    cout << endl;
+    cout << "rank film a: " << rankFilmA << endl;
+    cout << "rank film b: " << rankFilmB << endl;
+    cout << "rank film c: " << rankFilmC << endl;
+    cout << "rank film d: " << rankFilmD << endl;
+
+    // find max for ranking
+    compareResult1 = max(rankFilmA,rankFilmB);
+    compareResult2 = max(rankFilmC,rankFilmD);
+    result = max(compareResult1,compareResult2);
+
+    cout << endl;
+    cout << "hasil: " << result << endl;
+
+    resultFilm resultRank;
+
+    // for film A
+    if(film1.scoreResult == result){
+        resultRank.charFilm = film1.charFilm;
+        resultRank.title = film1.title;
+        resultRank.genre = film1.genre;
+        resultRank.country = film1.country;
+        resultRank.visual = film1.visual;
+        resultRank.age = film1.age;
+        resultRank.viewers = film1.viewers;
+        resultRank.ratting = film1.ratting;
+    } else if(film2.scoreResult == result){ // for film B
+        resultRank.charFilm = film2.charFilm;
+        resultRank.title = film2.title;
+        resultRank.genre = film2.genre;
+        resultRank.country = film2.country;
+        resultRank.visual = film2.visual;
+        resultRank.age = film2.age;
+        resultRank.viewers = film2.viewers;
+        resultRank.ratting = film2.ratting;
+    } else if(film3.scoreResult == result){ // for film C
+        resultRank.charFilm = film3.charFilm;
+        resultRank.title = film3.title;
+        resultRank.genre = film3.genre;
+        resultRank.country = film3.country;
+        resultRank.visual = film3.visual;
+        resultRank.age = film3.age;
+        resultRank.viewers = film3.viewers;
+        resultRank.ratting = film3.ratting;
+    } else if(film4.scoreResult == result){ // for film D
+        resultRank.charFilm = film4.charFilm;
+        resultRank.title = film4.title;
+        resultRank.genre = film4.genre;
+        resultRank.country = film4.country;
+        resultRank.visual = film4.visual;
+        resultRank.age = film4.age;
+        resultRank.viewers = film4.viewers;
+        resultRank.ratting = film4.ratting;
+    }
+
+    cout << endl;
+    cout << resultRank.charFilm << endl;
+    cout << "Title: " << resultRank.title << endl;
+    cout << "Genre: "<< resultRank.genre << endl;
+    cout << "Country: "<< resultRank.country << endl;
+    cout << "Visual: "<< resultRank.visual << endl;
+    cout << "Age: "<< resultRank.age << endl;
+    cout << "Viewers: "<< resultRank.viewers << endl;
+    cout << "Ratting: "<< resultRank.ratting << endl;
 }

@@ -2,7 +2,7 @@
 
 int main(){
 
-    string genre,visual,age,country,ratting,viewers;
+    string genre,country;
     string stringCompare[6][6];
     float compare[6][6];
 
@@ -14,11 +14,7 @@ int main(){
     }
 
     cout << "genre: "; cin >> genre;
-    cout << "visual: "; cin >> visual;
-    cout << "age: "; cin >> age;
     cout << "country: "; cin >> country;
-    cout << "ratting: "; cin >> ratting;
-    cout << "viewers: "; cin >> viewers;
 
     system("cls");
     cout << "Note: \n" 
@@ -33,6 +29,8 @@ int main(){
     << "dai suki\n\n"
     << "jika misalkan genre dan visual lebih suka visual dan diberi\n"
     << "nilai 3, maka di bagian visual dann genre itu dikasih 1/3" << endl;
+
+    cout << endl;
 
     string label[6] = {"genre","country","visual","age","viewers","ratting"};
 
@@ -52,13 +50,30 @@ int main(){
         }
     }   
 
+    cout << endl;
+    cout << "==========perbandingan kriteria==========\n";
     CriteriaComparasion(compare,stringCompare,label);
+    cout << endl;
+    cout << "==========alternatif genre==========\n";
     AlternativeForGenre();
+    cout << endl;
+    cout << "==========alternatif country==========\n";
     AlternativeForCountry();
+    cout << endl;
+    cout << "==========alternatif visual==========\n";
     AlternativeForVisual();
+    cout << endl;
+    cout << "==========alternatif age==========\n";
     AlternativeForAge();
+    cout << endl;
+    cout << "==========alternatif viewers==========\n";
     AlternativeForViewer();
+    cout << endl;
+    cout << "==========alternatif ratting==========\n";
     AlternativeForRatting();
+    cout << endl;
+    cout << "==========ranking==========\n";
+    Ranking();
 
     cin.get();
 }
