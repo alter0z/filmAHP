@@ -25,10 +25,8 @@ int main(){
     << "suka = 5\n"
     << "antara suka dan suka banget = 6\n"
     << "suka banget = 7\n"
-    << "antara suka banget dan dai suki = 8\n"
-    << "dai suki\n\n"
-    << "jika misalkan genre dan visual lebih suka visual dan diberi\n"
-    << "nilai 3, maka di bagian visual dann genre itu dikasih 1/3" << endl;
+    << "antara suka banget dan sangat suka banget = 8\n"
+    << "sangat suka banget = 9" << endl;
 
     cout << endl;
 
